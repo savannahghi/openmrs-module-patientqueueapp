@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module configVersion="1.2">
+
+	<!-- Module Properties -->
+	<id>${project.parent.artifactId}</id>
+	<name>${project.parent.name}</name>
+	<version>${project.parent.version}</version>
+	<package>${project.parent.groupId}.${project.parent.artifactId}</package>
+	<author>SGHI</author>
+	<description>
+		Contains OPD, Triage, Maternity, Delivery room, PACS and MCH
+	</description>
+	<updateURL>https://modules.openmrs.org/modules/download/${project.parent.artifactId}/update.rdf</updateURL>
+	<require_version>${openMRSVersion}</require_version>
+	<!-- / Module Properties -->
+
+	
+	<!-- Required Modules -->
+	<require_modules>
+		<require_module>org.openmrs.module.uiframework</require_module>
+		<require_module>org.openmrs.module.uilibrary</require_module>
+        <require_module>org.openmrs.module.appframework</require_module>
+		<require_module>org.openmrs.module.hospitalcore</require_module>
+		<require_module>org.openmrs.module.appui</require_module>
+		<require_module>org.openmrs.module.ehrconfigs</require_module>
+	</require_modules>
+	<!-- / Required Modules -->
+	
+	<!-- Module Activator -->
+	<activator>org.openmrs.module.patientqueueapp.PatientQueueAppActivator</activator>
+	<aware_of_modules>
+		<aware_of_module>org.openmrs.module.legacyui</aware_of_module>
+	</aware_of_modules>
+	
+	<!-- Maps hibernate file's, if present -->
+	<mappingFiles>
+				
+	</mappingFiles>
+
+	<!-- Internationalization -->
+	<privilege>
+		<name>App: Access MCH Triage</name>
+		<description>Able to access the MCH Triage App</description>
+	</privilege>
+	<privilege>
+		<name>App: Access MCH Clinic</name>
+		<description>Able to access the MCH Clinic App</description>
+	</privilege>
+	<privilege>
+		<name>App: Access MCH Immunization</name>
+		<description>Able to access the MCH Immunization App</description>
+	</privilege>
+
+	<!-- All message codes should start with ${project.parent.artifactId}. -->
+	<messages>
+		<lang>en</lang>
+		<file>messages.properties</file>
+	</messages>
+	<messages>
+		<lang>fr</lang>
+		<file>messages_fr.properties</file>
+	</messages>
+	<messages>
+		<lang>es</lang>
+		<file>messages_es.properties</file>
+	</messages>
+	<!-- /Internationalization -->
+
+</module>
+
