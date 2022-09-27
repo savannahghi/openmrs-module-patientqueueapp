@@ -8,6 +8,7 @@ import org.openmrs.module.hospitalcore.PatientQueueService;
 import org.openmrs.module.hospitalcore.model.OpdPatientQueue;
 import org.openmrs.module.hospitalcore.model.OpdPatientQueueLog;
 import org.openmrs.module.hospitalcore.model.TriagePatientQueue;
+import org.openmrs.module.patientqueueapp.PatientQueueUtils;
 import org.openmrs.ui.framework.SimpleObject;
 import org.openmrs.ui.framework.UiUtils;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +24,52 @@ import java.util.List;
 public class PatientQueueFragmentController {
 	public void controller() {}
 
-	public SimpleObject getPatientsInQueue(@RequestParam("opdId") Integer opdId, @RequestParam(value = "query", required = false) String query, UiUtils ui) {
+    public SimpleObject getPatientsInProgramQueue(@RequestParam("programId") Integer programId,
+                                                  UiUtils ui){
+        Concept treatmentProgramConcept = Context.getConceptService().getConceptByUuid(PatientQueueUtils.EXAM_ROOM_CONCEPT_UUID);
+
+        List<OpdPatientQueue> patientQueues = new ArrayList<OpdPatientQueue>();
+        patientQueues.addAll(Context.getService(PatientQueueService.class).listOpdPatientQueue("", programId, "", 0, 0));
+
+        Collections.sort(patientQueues, new Comparator<OpdPatientQueue>() {
+            public int compare(OpdPatientQueue q1, OpdPatientQueue q2) {
+                if(q1.getCreatedOn() != null && q2.getCreatedOn() != null && q1.getCreatedOn().compareTo(q1.getCreatedOn()) != 0) {
+                    return q1.getCreatedOn().compareTo(q2.getCreatedOn());
+                }
+                else {
+                    return q1.getCreatedOn().compareTo(q2.getCreatedOn());
+                }
+            }
+        });
+
+        List<SimpleObject> patientQueueObject = new ArrayList<SimpleObject>();
+        for(OpdPatientQueue patientQueue : patientQueues) {
+            SimpleObject patientInQueue = new SimpleObject();
+            patientInQueue.put("patientName", patientQueue.getPatientName());
+            patientInQueue.put("patientIdentifier", patientQueue.getPatientIdentifier());
+            patientInQueue.put("age",patientQueue.getAge());
+            patientInQueue.put("sex",patientQueue.getSex());
+            patientInQueue.put("status", patientQueue.getStatus());
+            patientInQueue.put("visitStatus", patientQueue.getVisitStatus());
+            patientInQueue.put("patientId",patientQueue.getPatient().getId());
+            patientInQueue.put("id", patientQueue.getId());
+
+            Concept oPdConcept = patientQueue.getOpdConcept();
+            if(oPdConcept.equals(treatmentProgramConcept))
+            {
+                //TODO get enrolled patients
+            }
+
+            if(patientQueue.getReferralConcept()!=null) {
+                patientInQueue.put("referralConcept.conceptId", patientQueue.getReferralConcept().getConceptId());
+            }
+            patientQueueObject.add(patientInQueue);
+        }
+        return SimpleObject.create("data", patientQueueObject);
+    }
+
+
+    public SimpleObject getPatientsInQueue(@RequestParam("opdId") Integer opdId, @RequestParam(value = "query", required = false) String query, UiUtils ui) {
 		Concept queueConcept = Context.getConceptService().getConcept(opdId);
 
 		//get teh quetion here from the given answer
