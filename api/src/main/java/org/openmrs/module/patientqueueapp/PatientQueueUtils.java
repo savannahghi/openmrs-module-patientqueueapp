@@ -31,14 +31,14 @@ public class PatientQueueUtils {
     }
     public static String enrolledTreatmentProgram(Patient patient)
     {
-        TreatmentService mchService = Context.getService(TreatmentService.class);
-        if(mchService.enrolledInChemo(patient)){
+        TreatmentService programService = Context.getService(TreatmentService.class);
+        if(programService.enrolledInChemo(patient)){
             return("CHEMO");
         }
-        else if(mchService.enrolledInRadio(patient)){
+        else if(programService.enrolledInRadio(patient)){
             return("RADIOTHERAPY");
         }
-        else if(mchService.enrolledInSurgery(patient)){
+        else if(programService.enrolledInSurgery(patient)){
             return("SURGERY");
         }
         else{
