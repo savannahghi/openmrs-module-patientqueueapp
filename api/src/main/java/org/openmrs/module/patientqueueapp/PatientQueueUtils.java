@@ -29,4 +29,20 @@ public class PatientQueueUtils {
         }
         return SimpleObject.fromCollection(mchRoles, ui, "role", "description", "uuid");
     }
+    public static String enrolledTreatmentProgram(Patient patient)
+    {
+        TreatmentService programService = Context.getService(TreatmentService.class);
+        if(programService.enrolledInChemo(patient)){
+            return("CHEMO");
+        }
+        else if(programService.enrolledInRadio(patient)){
+            return("RADIOTHERAPY");
+        }
+        else if(programService.enrolledInSurgery(patient)){
+            return("SURGERY");
+        }
+        else{
+            return("N/A");
+        }
+    }
 }

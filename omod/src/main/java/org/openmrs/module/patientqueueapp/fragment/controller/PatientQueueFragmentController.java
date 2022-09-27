@@ -57,7 +57,7 @@ public class PatientQueueFragmentController {
             Concept oPdConcept = patientQueue.getOpdConcept();
             if(oPdConcept.equals(treatmentProgramConcept))
             {
-                //TODO get enrolled patients
+                patientInQueue.put("clinic",PatientQueueUtils.enrolledTreatmentProgram(patientQueue.getPatient()));
             }
 
             if(patientQueue.getReferralConcept()!=null) {
