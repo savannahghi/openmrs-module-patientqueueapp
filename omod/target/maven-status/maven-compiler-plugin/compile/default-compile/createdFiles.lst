@@ -1,0 +1,6 @@
+org\openmrs\module\patientqueueapp\fragment\controller\PatientQueueFragmentController$1.class
+org\openmrs\module\patientqueueapp\fragment\controller\SearchPatientQueueFragmentController.class
+org\openmrs\module\patientqueueapp\page\controller\TriageQueuePageController.class
+org\openmrs\module\patientqueueapp\page\controller\TreatmentProgramPageController.class
+org\openmrs\module\patientqueueapp\fragment\controller\PatientQueueFragmentController.class
+org\openmrs\module\patientqueueapp\page\controller\OpdQueuePageController.class

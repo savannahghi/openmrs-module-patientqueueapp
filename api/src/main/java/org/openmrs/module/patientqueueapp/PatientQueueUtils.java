@@ -3,6 +3,7 @@ package org.openmrs.module.patientqueueapp;
 import org.openmrs.Patient;
 import org.openmrs.Role;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.mchapp.api.MchService;
 import org.openmrs.ui.framework.SimpleObject;
 import org.openmrs.ui.framework.UiUtils;
 
@@ -31,14 +32,14 @@ public class PatientQueueUtils {
     }
     public static String enrolledTreatmentProgram(Patient patient)
     {
-        TreatmentService programService = Context.getService(TreatmentService.class);
-        if(programService.enrolledInChemo(patient)){
+        MchService programService = Context.getService(MchService.class);
+        if(programService.enrolledInANC(patient)){
             return("CHEMO");
         }
-        else if(programService.enrolledInRadio(patient)){
+        else if(programService.enrolledInPNC(patient)){
             return("RADIOTHERAPY");
         }
-        else if(programService.enrolledInSurgery(patient)){
+        else if(programService.enrolledInCWC(patient)){
             return("SURGERY");
         }
         else{

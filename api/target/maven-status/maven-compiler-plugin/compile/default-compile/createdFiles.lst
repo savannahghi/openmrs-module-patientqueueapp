@@ -1,0 +1,7 @@
+org\openmrs\module\patientqueueapp\PatientQueueAppActivator.class
+org\openmrs\module\patientqueueapp\PatientQueueUtils.class
+org\openmrs\module\patientqueueapp\PatientWrappers.class
+org\openmrs\module\patientqueueapp\metadata\PatientQueueAppMetadata$_Role.class
+org\openmrs\module\patientqueueapp\metadata\PatientQueueAppMetadata.class
+org\openmrs\module\patientqueueapp\PatientQueueConstants.class
+org\openmrs\module\patientqueueapp\metadata\PatientQueueAppMetadata$_Privilege.class

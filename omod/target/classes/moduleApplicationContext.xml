@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  		    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+  		    http://www.springframework.org/schema/context
+  		    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+  		    http://www.springframework.org/schema/jee
+  		    http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
+  		    http://www.springframework.org/schema/tx
+  		    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+  		    http://www.springframework.org/schema/aop
+  		    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+  		    http://www.springframework.org/schema/util
+  		    http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<!-- Add here beans related to the API context -->
+	<bean id="patientqueueapp.opd.opdqueue" factory-bean="kenyacore.appFactoryBean" factory-method="createInstance">
+		<constructor-arg value="patientqueueapp.opdqueue" />
+		<constructor-arg value="Oncology Clinic" />
+		<constructor-arg value="patientqueueapp/opdQueue.page?app=patientqueueapp.opdqueue" />
+		<constructor-arg value="patientqueueapp:apps/doctor.png" />
+		<constructor-arg value="1550" />
+	</bean>
+	<bean id="patientqueueapp.app.triage" factory-bean="kenyacore.appFactoryBean" factory-method="createInstance">
+		<constructor-arg value="patientqueueapp.triage" />
+		<constructor-arg value="Oncology Triage" />
+		<constructor-arg value="patientqueueapp/triageQueue.page?app=patientqueueapp.triage" />
+		<constructor-arg value="patientqueueapp:apps/triage.png" />
+		<constructor-arg value="1500" />
+	</bean>
+    <bean id="patientqueueapp.mchapp.clinic" factory-bean="kenyacore.appFactoryBean" factory-method="createInstance">
+        <constructor-arg value="patientqueueapp.mchclinic" />
+        <constructor-arg value="Treatment Program" />
+        <constructor-arg value="patientqueueapp/treatmentProgram.page" />
+        <constructor-arg value="patientqueueapp:apps/doctor.png" />
+        <constructor-arg value="2002" />
+    </bean>
+
+</beans>
