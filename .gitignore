@@ -4,7 +4,6 @@
 .settings
 **/.project
 **/.settings
-**/target
 *.iml
 /.idea
 **/bin
