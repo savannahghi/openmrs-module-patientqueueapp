@@ -165,7 +165,7 @@ jq(function(){
                         jq("#patient-search-clear-button").click();
                         var opdId = jq('#queue-choice').val();
                         if(opdId == null){
-                            window.location = emr.pageLink("mchapp", "main", { "patientId" : selectedPatient.patientId, "queueId" : data.queueId })
+                            window.location = emr.pageLink("treatmentapp", "main", { "patientId" : selectedPatient.patientId, "queueId" : data.queueId })
                         }else{
                             window.location = emr.pageLink("patientdashboardapp", "main", { "patientId" : selectedPatient.patientId, "opdId": opdId, "queueId" : data.queueId })
                         }

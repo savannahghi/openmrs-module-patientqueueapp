@@ -3,6 +3,7 @@ package org.openmrs.module.patientqueueapp;
 import org.openmrs.Patient;
 import org.openmrs.Role;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.treatmentapp.api.TreatmentService;
 import org.openmrs.ui.framework.SimpleObject;
 import org.openmrs.ui.framework.UiUtils;
 
