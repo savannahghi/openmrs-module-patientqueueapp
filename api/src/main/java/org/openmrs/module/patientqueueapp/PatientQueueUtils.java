@@ -36,7 +36,7 @@ public class PatientQueueUtils {
         if(programService.enrolledInChemo(patient)){
             return("CHEMO");
         }
-        else if(programService.enrolledInRadioTherapy(patient)){
+        else if(programService.enrolledInRadio(patient)){
             return("RADIOTHERAPY");
         }
         else if(programService.enrolledInSurgery(patient)){
